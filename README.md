@@ -4,40 +4,39 @@ A standalone local tool that reads `FILENAME` and `FINAL_TITLE` columns from an
 Excel file and writes a one-line table bookmark into every matching PDF in a
 local folder.
 
-## For End Users (No Python Required)
+---
 
-1. Unzip the `PDF_Bookmark_Tool` folder that was shared with you.
-2. Double-click `PDF_Bookmark_Tool.exe` to launch the app.
-3. Click **Browse Excel...** and pick an `.xlsx` file that contains the columns
-   `FILENAME` and `FINAL_TITLE`.
-4. Click **Browse Folder...** and pick a folder that contains your PDF files.
-5. Click **Precheck (no changes)** to validate the match without touching any
-   files. The log area will show how many PDFs will be written, unmatched,
-   missing, or in conflict.
-6. When you are happy with the precheck results, click
-   **Run (overwrite PDFs)**. The tool writes one top-level bookmark into each
-   matched PDF, **overwriting the original file**.
-7. When the run finishes, a `bookmark_result.xlsx` report is generated inside
-   the PDF folder. It lists the outcome for every PDF.
+## For End Users
 
-## Matching Rule
+Follow these steps to build and run the tool on your computer.
 
-- The Excel `FILENAME` value (for example `t-14-01-01.rtf`) has `.pdf` appended
-  automatically, and must exactly match a real PDF file name in the folder.
+### 1. Build the Application
+You will need to have Python installed on your computer to build the tool.
+
+1. Download or clone this repository to your local machine and unzip it.
+2. Open the `implementation` folder.
+3. Double-click the `build.bat` file.
+   - *This script will automatically install the required libraries and package the code into an easy-to-use Windows executable.*
+   - *A command prompt window will appear. Wait until it says "Build finished!" and prompts you to press any key to continue.*
+4. Once the build is complete, a new folder named `dist` will be created. 
+5. Navigate into `dist\PDF_Bookmark_Tool\`. This folder contains your ready-to-use application!
+
+*(Note: You can move this `PDF_Bookmark_Tool` folder anywhere you like, but **never** move the `.exe` file out of the folder by itself, as it relies on the `_internal` folder next to it.)*
+
+### 2. How to Use the Tool
+
+1. Double-click `PDF_Bookmark_Tool.exe` inside the `dist\PDF_Bookmark_Tool` folder to launch the app.
+2. Click **Browse Excel...** and pick an `.xlsx` file that contains the columns `FILENAME` and `FINAL_TITLE`.
+3. Click **Browse Folder...** and pick a folder that contains your PDF files.
+4. Click **Precheck (no changes)** to validate the match without touching any files. The log area will show how many PDFs will be written, unmatched, missing, or in conflict.
+5. When you are happy with the precheck results, click **Run (overwrite PDFs)**. The tool writes one top-level bookmark into each matched PDF, **overwriting the original file**.
+6. When the run finishes, a `bookmark_result.xlsx` report is generated inside the PDF folder. It lists the outcome for every PDF.
+
+### Matching Rule
+- The Excel `FILENAME` value (for example `t-14-01-01.rtf`) has `.pdf` appended automatically, and must exactly match a real PDF file name in the folder.
 - Matching is case-sensitive and does not do any fuzzy normalization.
 
-## First-Version Limits
-
-- Only scans the selected folder itself; subfolders are not recursed into.
-- Every matched PDF receives exactly one top-level bookmark that jumps to
-  page 1.
-- Any existing bookmarks in the PDF are removed; only this new one remains.
-- The tool overwrites the original PDF. Internally it writes to a temp file
-  first and then atomically replaces the original, so a failure mid-run will
-  not corrupt the original file.
-
-## Result Report Columns
-
+### Result Report Columns
 | Column | Description |
 | --- | --- |
 | PDF File | The PDF file name inside the folder |
@@ -48,31 +47,33 @@ local folder.
 
 ---
 
-## For Developers (Rebuilding the Executable)
+## For Developers
 
-Prerequisites: Python 3.10 or newer, `pip`.
+If you want to modify the code or run it directly from the source without packaging:
 
-1. Install dependencies:
+### Prerequisites
+Python 3.10 or newer, and `pip`.
 
-   ```powershell
-   cd "C:\Users\Xi.Li\Desktop\pdf bookmark\implementation"
-   pip install -r requirements.txt
-   ```
+### 1. Install dependencies
+Open your terminal/command prompt, navigate to the `implementation` folder, and run:
+```powershell
+pip install -r requirements.txt
+```
 
-2. Run from source (useful while developing):
+### 2. Run from source
+To launch the GUI directly using Python during development:
+```powershell
+python main.py
+```
 
-   ```powershell
-   python main.py
-   ```
+### 3. Rebuild the executable
+If you make changes to the code and want to generate a new `.exe`, simply run:
+```powershell
+.\build.bat
+```
+The script cleans previous builds, installs dependencies, and calls PyInstaller to regenerate the `dist/PDF_Bookmark_Tool/` folder.
 
-3. Rebuild the standalone Windows executable for distribution:
-
-   Double-click `build.bat`. The script cleans previous builds, installs
-   dependencies, and calls PyInstaller. When it finishes, the new build is in
-   `dist/PDF_Bookmark_Tool/`. Zip that whole folder and share it.
-
-## Project Layout
-
+### Project Layout
 ```
 implementation/
 ├── main.py                 # Entry point
