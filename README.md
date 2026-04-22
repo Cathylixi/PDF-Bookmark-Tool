@@ -6,31 +6,19 @@ local folder.
 
 ---
 
-## For End Users
+## For End Users (No Python Required)
 
-Follow these steps to build and run the tool on your computer.
+You do not need to install Python or build anything to use this tool. 
 
-### 1. Build the Application
-You will need to have Python installed on your computer to build the tool.
-
-1. Download or clone this repository to your local machine and unzip it.
-2. Open the `implementation` folder.
-3. Double-click the `build.bat` file.
-   - *This script will automatically install the required libraries and package the code into an easy-to-use Windows executable.*
-   - *A command prompt window will appear. Wait until it says "Build finished!" and prompts you to press any key to continue.*
-4. Once the build is complete, a new folder named `dist` will be created. 
-5. Navigate into `dist\PDF_Bookmark_Tool\`. This folder contains your ready-to-use application!
-
-*(Note: You can move this `PDF_Bookmark_Tool` folder anywhere you like, but **never** move the `.exe` file out of the folder by itself, as it relies on the `_internal` folder next to it.)*
-
-### 2. How to Use the Tool
-
-1. Double-click `PDF_Bookmark_Tool.exe` inside the `dist\PDF_Bookmark_Tool` folder to launch the app.
-2. Click **Browse Excel...** and pick an `.xlsx` file that contains the columns `FILENAME` and `FINAL_TITLE`.
-3. Click **Browse Folder...** and pick a folder that contains your PDF files.
-4. Click **Precheck (no changes)** to validate the match without touching any files. The log area will show how many PDFs will be written, unmatched, missing, or in conflict.
-5. When you are happy with the precheck results, click **Run (overwrite PDFs)**. The tool writes one top-level bookmark into each matched PDF, **overwriting the original file**.
-6. When the run finishes, a `bookmark_result.xlsx` report is generated inside the PDF folder. It lists the outcome for every PDF.
+1. Download the `PDF_Bookmark_Tool.zip` file provided by the developer and unzip it to your computer.
+2. Open the unzipped `PDF_Bookmark_Tool` folder.
+   *(Note: You can move this folder anywhere you like, but **never** move the `.exe` file out of the folder by itself, as it relies on the `_internal` folder next to it.)*
+3. Double-click `PDF_Bookmark_Tool.exe` to launch the app.
+4. Click **Browse Excel...** and pick an `.xlsx` file that contains the columns `FILENAME` and `FINAL_TITLE`.
+5. Click **Browse Folder...** and pick a folder that contains your PDF files.
+6. Click **Precheck (no changes)** to validate the match without touching any files. The log area will show how many PDFs will be written, unmatched, missing, or in conflict.
+7. When you are happy with the precheck results, click **Run (overwrite PDFs)**. The tool writes one top-level bookmark into each matched PDF, **overwriting the original file**.
+8. When the run finishes, a `bookmark_result.xlsx` report is generated inside the PDF folder. It lists the outcome for every PDF.
 
 ### Matching Rule
 - The Excel `FILENAME` value (for example `t-14-01-01.rtf`) has `.pdf` appended automatically, and must exactly match a real PDF file name in the folder.
