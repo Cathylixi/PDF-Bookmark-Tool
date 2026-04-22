@@ -12,7 +12,7 @@ You do not need to install Python or build anything to use this tool.
 
 1. Download the `PDF_Bookmark_Tool.zip` file provided by the developer and unzip it to your computer.
 2. Open the unzipped `PDF_Bookmark_Tool` folder. Click `build` to download necessary package. 
-3. Double-click `PDF_Bookmark_Tool.exe` to launch the app.
+3. Go to `dist\PDF_Bookmark_Tool\`. Double-click `PDF_Bookmark_Tool.exe` to launch the app.
 4. Click **Browse Excel...** and pick an `.xlsx` file that contains the columns `FILENAME` and `FINAL_TITLE`.
 5. Click **Browse Folder...** and pick a folder that contains your PDF files.
 6. Click **Precheck (no changes)** to validate the match without touching any files. The log area will show how many PDFs will be written, unmatched, missing, or in conflict.
