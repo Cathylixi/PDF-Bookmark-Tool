@@ -11,8 +11,7 @@ local folder.
 You do not need to install Python or build anything to use this tool. 
 
 1. Download the `PDF_Bookmark_Tool.zip` file provided by the developer and unzip it to your computer.
-2. Open the unzipped `PDF_Bookmark_Tool` folder.
-   *(Note: You can move this folder anywhere you like, but **never** move the `.exe` file out of the folder by itself, as it relies on the `_internal` folder next to it.)*
+2. Open the unzipped `PDF_Bookmark_Tool` folder. Click "build" to download necessary package. 
 3. Double-click `PDF_Bookmark_Tool.exe` to launch the app.
 4. Click **Browse Excel...** and pick an `.xlsx` file that contains the columns `FILENAME` and `FINAL_TITLE`.
 5. Click **Browse Folder...** and pick a folder that contains your PDF files.
